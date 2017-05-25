@@ -1,0 +1,11 @@
+extends index.pug
+
+block body
+  div(class="container")
+    h4 Kleinanzeige Aufgeben
+    p(id="status")
+    form(id="kleinanzeige",action="/anzeigeaufgeben",method="post")
+      div(class="input-group")
+        textarea(id="kleinanzeigentext",type='text', class="form-control", placeholder="Anzeigentext", name="anzeige", cols="40", rows="5")
+      div(class="input-group")
+        input(type="submit", value="Anzeige Aufgeben" class="btn btn-success")
