@@ -9,7 +9,7 @@ var KleinanzeigenSchema = new mongoose.Schema({
 	text: String
 });
 
-const mongoUri = 'mongodb://127.0.0.1/Kleinanzeigen' || process.env.MONGODB;
+const mongoUri = process.env.MONGODB || 'mongodb://127.0.0.1/Kleinanzeigen';
 
 var dbconn = mongoose.createConnection(mongoUri),
 	Anzeigen = dbconn.model('kleinanzeigen', KleinanzeigenSchema, 'kleinanzeigen');
