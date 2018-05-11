@@ -7,6 +7,9 @@ var app = express();
 
 var KleinanzeigenSchema = new mongoose.Schema({
 	text: String
+},
+{
+	timestamps: true
 });
 
 const mongoUri = process.env.MONGODB || 'mongodb://127.0.0.1/Kleinanzeigen';
