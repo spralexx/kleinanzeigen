@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kleinanzeigen
+  namespace: kleinanzeigen
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kleinanzeigen
+    spec:
+      containers:
+        - name: kleinanzeigen
+          image: 'torgejuergensen/kleinanzeigen'
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 500m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 128Mi
+          ports:
+            - containerPort: 30
+          env:
+            - name: PORT
+              value: 80
+            - name: MONGODB
+              value: >-
+                mongodb://mongodb-mongodb-mongodb-replicaset-0.mongodb-mongodb-mongodb-replicaset.mongodb.svc.cluster.local:27017,mongodb-mongodb-mongodb-replicaset-1.mongodb-mongodb-mongodb-replicaset.mongodb.svc.cluster.local:27017,mongodb-mongodb-mongodb-replicaset-2.mongodb-mongodb-mongodb-replicaset.mongodb.svc.cluster.local:27017/kleinanzeigen?replicaSet=rs0

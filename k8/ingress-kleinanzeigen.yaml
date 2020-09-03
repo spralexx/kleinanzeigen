@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kleinanzeigen
+  namespace: kleinanzeigen
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+    - host: kleinanzeigen.dlrg.sh
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: kleinanzeigen
+              servicePort: http
