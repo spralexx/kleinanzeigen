@@ -2,7 +2,7 @@ function init(){
 	var form = document.getElementById('kleinanzeige');
 	form.addEventListener('submit',function(e){
 		e.preventDefault();
-		if(document.getElementById('kleinanzeigentext').value){
+		if(document.getElementById('kleinanzeigentext').value && document.getElementById('tag').value ){
 
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
@@ -18,7 +18,8 @@ function init(){
 			};
 			xhttp.open('POST', '/anzeigeaufgeben', true);
 			xhttp.setRequestHeader('Content-Type', 'application/json');
-			xhttp.send(JSON.stringify({kleinanzeige:document.getElementById('kleinanzeigentext').value}));
+			xhttp.send(JSON.stringify({kleinanzeige:document.getElementById('kleinanzeigentext').value,
+									    tag:document.getElementById('tag').value}));
 
 
 		}

@@ -6,13 +6,21 @@ var port = 3000; //port to listen on
 var app = express();
 
 var KleinanzeigenSchema = new mongoose.Schema({
-	text: String
+	text: {
+		type: String,
+		required: true
+	},
+	tag: {
+		type: String,
+		enum: ["Landesmeisterschaften","Brahmsee"],
+		required: true
+	}
 },
 {
 	timestamps: true
 });
 
-const mongoUri = process.env.MONGODB || 'mongodb://127.0.0.1/Kleinanzeigen';
+const mongoUri = process.env.MONGODB || 'mongodb://db/Kleinanzeigen';
 
 var dbconn = mongoose.createConnection(mongoUri),
 	Anzeigen = dbconn.model('kleinanzeigen', KleinanzeigenSchema, 'kleinanzeigen');
@@ -30,10 +38,10 @@ app.get('/',function(req, res) {
   );
 app.post('/anzeigeaufgeben',function(req,res){
 	try{
-		if(req.body.kleinanzeige.length<=160){
+		if(req.body.kleinanzeige.length<=245){
 
-			console.log(req.body.kleinanzeige);
-			var anzeige = new Anzeigen({text: req.body.kleinanzeige});
+			console.log(req.body);
+			var anzeige = new Anzeigen({text: req.body.kleinanzeige, tag:req.body.tag});
 			anzeige.save(function (err) {
 				if (err) return console.error(err);
 			});

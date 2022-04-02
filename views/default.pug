@@ -6,6 +6,12 @@ block body
     p(id="status")
     form(id="kleinanzeige",action="/anzeigeaufgeben",method="post")
       div(class="input-group")
+        select(id="tag",type='text', class="form-control", name="tag")
+          option(value="Brahmsee") Brahmsee
+          option(value="Landesmeisterschaften") Landesmeisterschaften
+
+      div(class="input-group")
         textarea(id="kleinanzeigentext",type='text', class="form-control", placeholder="Anzeigentext", name="anzeige", cols="40", rows="5")
+
       div(class="input-group")
         input(type="submit", value="Anzeige Aufgeben" class="btn btn-success")

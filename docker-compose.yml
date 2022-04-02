@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  kleinanzeigen:
+    image: spralexx/kleinanzeigen
+    restart: always
+    ports: 
+      - 3000:3000
+    depends_on:
+      - db
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - ./mongo:/data/db
+    ports:
+      - 27017:27017
