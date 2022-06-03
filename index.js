@@ -12,7 +12,7 @@ var KleinanzeigenSchema = new mongoose.Schema({
 	},
 	tag: {
 		type: String,
-		enum: ["Landesmeisterschaften","Brahmsee","Wünsche für den Brahmsee"],
+		enum: ["Ladelund","Landesmeisterschaften","Brahmsee","Wünsche für den Brahmsee"],
 		required: true
 	}
 },

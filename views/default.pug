@@ -3,13 +3,15 @@ extends index.pug
 block body
   div(class="container")
     h4 Kleinanzeige Aufgeben
+    p Hier kannst du Kleinanzeigen und Wüsnche aufgeben. Wähle dazu bitte einfach die richtige Kategorie aus.
     p(id="status")
     form(id="kleinanzeige",action="/anzeigeaufgeben",method="post")
       div(class="input-group")
         select(id="tag",type='text', class="form-control", name="tag")
-          option(value="Brahmsee") Brahmsee
+          option(value="Ladelund") Kleinanzeigen Brahmsee
+          option(value="Brahmsee") Kleinanzeigen Brahmsee
           option(value="Wünsche für den Brahmsee") Wünsche für den Brahmsee 
-          option(value="Landesmeisterschaften") Landesmeisterschaften
+          option(value="Landesmeisterschaften") Kleinanzeigen Landesmeisterschaften
 
       div(class="input-group")
         textarea(id="kleinanzeigentext",type='text', class="form-control", placeholder="Anzeigentext", name="anzeige", cols="40", rows="5")
